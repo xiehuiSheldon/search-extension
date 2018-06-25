@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>    
+    <title>google search</title>   
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style>
+		.match {
+			color: orange;
+		}
+	</style>
+  </head>
+  
+  <body>
+	{% block content %}
+	  {% for hit in results %}
+		<div>
+		  <h1>{{ hit['title'] }}</h1>
+		</div>
+		<p>{{ hit.highlights("content")|safe }}</p>
+		{% if not loop.last %}
+		  <hr>
+		{% endif %}
+	  {% endfor %}
+	{% endblock %}
+  </body>
+</html>
